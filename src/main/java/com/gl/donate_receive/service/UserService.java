@@ -1,9 +1,9 @@
-package com.gl.donate_receive.donate_receive.service;
+package com.gl.donate_receive.service;
 
-import com.gl.donate_receive.donate_receive.dto.UserCreateDto;
-import com.gl.donate_receive.donate_receive.model.User;
-import com.gl.donate_receive.donate_receive.repository.UserRepository;
-import com.gl.donate_receive.donate_receive.service.converter.UserConverter;
+import com.gl.donate_receive.dto.UserCreateDto;
+import com.gl.donate_receive.model.User;
+import com.gl.donate_receive.repository.UserRepository;
+import com.gl.donate_receive.service.converter.UserConverter;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,4 +22,3 @@ public class UserService {
 		return userRepository.save(user);
 	}
 }
-

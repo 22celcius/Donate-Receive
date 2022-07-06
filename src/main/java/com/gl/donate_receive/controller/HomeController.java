@@ -1,12 +1,13 @@
-package com.gl.donate_receive.donate_receive.controller;
+package com.gl.donate_receive.controller;
 
-import com.gl.donate_receive.donate_receive.service.ItemService;
+import com.gl.donate_receive.service.ItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
+
 	private final ItemService itemService;
 
 	public HomeController(ItemService itemService) {
@@ -19,4 +20,3 @@ public class HomeController {
 		return "home";
 	}
 }
-

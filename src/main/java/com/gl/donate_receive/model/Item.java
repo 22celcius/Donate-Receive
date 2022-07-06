@@ -1,4 +1,4 @@
-package com.gl.donate_receive.donate_receive.model;
+package com.gl.donate_receive.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,4 +31,3 @@ public class Item {
 	private ItemStatus status;
 	private UUID ownerId;
 }
-

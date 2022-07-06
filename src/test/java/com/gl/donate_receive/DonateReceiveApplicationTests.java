@@ -1,4 +1,4 @@
-package com.gl.donate_receive.donate_receive;
+package com.gl.donate_receive;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

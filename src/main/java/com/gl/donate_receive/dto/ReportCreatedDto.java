@@ -1,4 +1,4 @@
-package com.gl.donate_receive.donate_receive.dto;
+package com.gl.donate_receive.dto;
 
 import java.util.UUID;
 
@@ -8,4 +8,3 @@ public class ReportCreatedDto {
 	private String comment;
 	private byte[] mediaFile;
 }
-

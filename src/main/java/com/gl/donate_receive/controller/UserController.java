@@ -1,8 +1,8 @@
-package com.gl.donate_receive.donate_receive.controller;
+package com.gl.donate_receive.controller;
 
-import com.gl.donate_receive.donate_receive.dto.UserCreateDto;
-import com.gl.donate_receive.donate_receive.model.User;
-import com.gl.donate_receive.donate_receive.service.UserService;
+import com.gl.donate_receive.dto.UserCreateDto;
+import com.gl.donate_receive.model.User;
+import com.gl.donate_receive.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,4 +26,3 @@ public class UserController {
 		return new ResponseEntity<>(createdUser, HttpStatus.OK);
 	}
 }
-

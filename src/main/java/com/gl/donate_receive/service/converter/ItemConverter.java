@@ -1,9 +1,9 @@
-package com.gl.donate_receive.donate_receive.service.converter;
+package com.gl.donate_receive.service.converter;
 
-import com.gl.donate_receive.donate_receive.dto.ItemDto;
-import com.gl.donate_receive.donate_receive.model.Item;
-import com.gl.donate_receive.donate_receive.model.ItemStatus;
-import com.gl.donate_receive.donate_receive.model.ItemType;
+import com.gl.donate_receive.dto.ItemDto;
+import com.gl.donate_receive.model.Item;
+import com.gl.donate_receive.model.ItemStatus;
+import com.gl.donate_receive.model.ItemType;
 import org.springframework.stereotype.Component;
 
 @Component

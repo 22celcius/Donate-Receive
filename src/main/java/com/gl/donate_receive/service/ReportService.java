@@ -1,6 +1,6 @@
-package com.gl.donate_receive.donate_receive.service;
+package com.gl.donate_receive.service;
 
-import com.gl.donate_receive.donate_receive.repository.ReportRepository;
+import com.gl.donate_receive.repository.ReportRepository;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,4 +12,3 @@ public class ReportService {
 		this.reportRepository = reportRepository;
 	}
 }
-
