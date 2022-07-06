@@ -20,7 +20,7 @@ public class ItemConverter {
 
 	private ItemStatus getStatus(ItemDto itemDto) {
 		return itemDto.getType().equals(ItemType.AVAILABLE) ?
-			ItemStatus.NEED_RECEIVER : ItemStatus.NEED_DONATOR;
+			ItemStatus.RECEIVABLE : ItemStatus.DONATABLE;
 	}
 }
 

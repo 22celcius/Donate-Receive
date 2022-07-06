@@ -32,6 +32,7 @@ public class User {
 	@Column(unique = true)
 	private String login;
 	@NotNull
+	@Size(max = 128)
 	private String password;
 	@OneToMany(mappedBy = "ownerId")
 	private List<Item> items;

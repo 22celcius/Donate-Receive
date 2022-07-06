@@ -12,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -23,6 +24,7 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID itemId;
 	private String name;
+	@Size(max = 500)
 	private String description;
 	@Enumerated(EnumType.STRING)
 	private ItemType type;
