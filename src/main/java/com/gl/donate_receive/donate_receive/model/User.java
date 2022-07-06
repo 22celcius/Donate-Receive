@@ -33,4 +33,5 @@ public class User {
 	private String password;
 	@OneToMany(mappedBy = "ownerId")
 	private List<Item> items;
+
 }
