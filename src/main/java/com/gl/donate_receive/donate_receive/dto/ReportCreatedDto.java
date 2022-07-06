@@ -6,6 +6,6 @@ public class ReportCreatedDto {
 	private UUID itemId;
 	private UUID receiverId;
 	private String comment;
-	private byte[] mediaType;
+	private byte[] mediaFile;
 }
 

@@ -15,6 +15,6 @@ public class Report {
 	private ReportId reportId;
 	private String comment;
 	@Lob
-	private byte[] mediaType;
+	private byte[] mediaFile;
 }
 
