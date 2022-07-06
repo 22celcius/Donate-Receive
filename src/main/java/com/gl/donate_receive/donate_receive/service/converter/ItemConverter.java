@@ -22,5 +22,5 @@ public class ItemConverter {
 		return itemDto.getType().equals(ItemType.AVAILABLE) ?
 			ItemStatus.NEED_RECEIVER : ItemStatus.NEED_DONATOR;
 	}
-
 }
+

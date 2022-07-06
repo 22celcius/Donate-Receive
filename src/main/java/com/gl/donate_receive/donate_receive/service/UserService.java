@@ -21,5 +21,5 @@ public class UserService {
 		var user = userConverter.dtoToModel(userDto);
 		return userRepository.save(user);
 	}
-
 }
+

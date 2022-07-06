@@ -13,5 +13,5 @@ public class ItemDto {
 	private String description;
 	private ItemType type;
 	private UUID ownerId;
-
 }
+

@@ -16,5 +16,5 @@ public class Report {
 	private String comment;
 	@Lob
 	private byte[] mediaType;
-
 }
+

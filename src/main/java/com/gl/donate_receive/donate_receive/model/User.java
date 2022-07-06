@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.List;
 import java.util.UUID;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,11 +28,12 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	@NotNull
+	@Size(max = 320)
+	@Column(unique = true)
 	private String login;
 	@NotNull
-	@Size(max = 320)
 	private String password;
 	@OneToMany(mappedBy = "ownerId")
 	private List<Item> items;
-
 }
+

@@ -12,5 +12,5 @@ public class ReportId implements Serializable {
 	private static final long serialVersionUID = -5582052851164019066L;
 	private UUID itemId;
 	private UUID receiverId;
-
 }
+

@@ -18,5 +18,5 @@ public class HomeController {
 		model.addAttribute("items", itemService.getAll());
 		return "home";
 	}
-
 }
+

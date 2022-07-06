@@ -14,5 +14,5 @@ public class UserCreateDto {
 	@Size(max = 320)
 	private String password;
 	private Role role;
-
 }
+

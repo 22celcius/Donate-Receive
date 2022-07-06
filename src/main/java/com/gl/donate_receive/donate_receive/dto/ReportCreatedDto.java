@@ -7,5 +7,5 @@ public class ReportCreatedDto {
 	private UUID receiverId;
 	private String comment;
 	private byte[] mediaType;
-
 }
+

@@ -11,5 +11,5 @@ public class ReportService {
 	public ReportService(ReportRepository reportRepository) {
 		this.reportRepository = reportRepository;
 	}
-
 }
+
