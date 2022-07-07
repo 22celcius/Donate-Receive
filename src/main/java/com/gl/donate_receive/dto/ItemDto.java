@@ -1,6 +1,6 @@
-package com.gl.donate_receive.donate_receive.dto;
+package com.gl.donate_receive.dto;
 
-import com.gl.donate_receive.donate_receive.model.ItemType;
+import com.gl.donate_receive.model.ItemType;
 import lombok.Data;
 
 import java.util.UUID;
@@ -12,4 +12,3 @@ public class ItemDto {
 	private ItemType type;
 	private UUID ownerId;
 }
-

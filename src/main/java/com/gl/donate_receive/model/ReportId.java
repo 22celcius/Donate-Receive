@@ -1,4 +1,4 @@
-package com.gl.donate_receive.donate_receive.model;
+package com.gl.donate_receive.model;
 
 import lombok.Data;
 
@@ -13,4 +13,3 @@ public class ReportId implements Serializable {
 	private UUID itemId;
 	private UUID receiverId;
 }
-

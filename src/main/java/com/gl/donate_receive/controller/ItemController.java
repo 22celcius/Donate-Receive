@@ -1,9 +1,9 @@
-package com.gl.donate_receive.donate_receive.controller;
+package com.gl.donate_receive.controller;
 
-import com.gl.donate_receive.donate_receive.dto.ItemDto;
-import com.gl.donate_receive.donate_receive.model.Item;
-import com.gl.donate_receive.donate_receive.model.ItemType;
-import com.gl.donate_receive.donate_receive.service.ItemService;
+import com.gl.donate_receive.dto.ItemDto;
+import com.gl.donate_receive.model.Item;
+import com.gl.donate_receive.model.ItemType;
+import com.gl.donate_receive.service.ItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -65,4 +65,3 @@ public class ItemController {
 		return "manage-item";
 	}
 }
-
