@@ -4,43 +4,45 @@ import com.gl.donate_receive.donate_receive.dto.ItemDto;
 import com.gl.donate_receive.donate_receive.model.Item;
 import com.gl.donate_receive.donate_receive.repository.ItemRepository;
 import com.gl.donate_receive.donate_receive.service.converter.ItemConverter;
+import com.gl.donate_receive.donate_receive.service.interfaces.ItemServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityNotFoundException;
 
 @Service
-public class ItemService {
+@AllArgsConstructor
+public class ItemService implements ItemServiceInterface {
 
 	private final ItemRepository itemRepository;
 	private final ItemConverter itemConverter;
 
-	public ItemService(ItemRepository itemRepository, ItemConverter itemConverter) {
-		this.itemRepository = itemRepository;
-		this.itemConverter = itemConverter;
-	}
-
-	public Item create(ItemDto itemDto){
+	@Override
+	public Item create(ItemDto itemDto) {
 		var item = itemConverter.dtoToModel(itemDto);
 		return itemRepository.save(item);
 	}
 
-	public Item getById(String itemId){
+	@Override
+	public Item getById(String itemId) {
 		return itemRepository.findById(UUID.fromString(itemId))
-			.orElseThrow(() -> new EntityNotFoundException("Item with id: " + itemId + "not found"));
+			.orElseThrow(() -> new EntityNotFoundException("Item with id: " + itemId + " not found"));
 	}
 
-	public Item update(String itemId, ItemDto itemDto){
+	@Override
+	public Item update(String itemId, ItemDto itemDto) {
 		var item = itemConverter.dtoToModel(itemDto);
 		item.setItemId(UUID.fromString(itemId));
 		return itemRepository.save(item);
 	}
 
+	@Override
 	public void delete(String itemId){
 		itemRepository.deleteById(UUID.fromString(itemId));
 	}
 
+	@Override
 	public List<Item> getAll() {
 		return itemRepository.findAll();
 	}
