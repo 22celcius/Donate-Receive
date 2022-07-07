@@ -11,9 +11,12 @@ import javax.persistence.Lob;
 @Data
 @Builder
 public class Report {
+
 	@EmbeddedId
 	private ReportId reportId;
 	private String comment;
 	@Lob
 	private byte[] mediaFile;
+
 }
+

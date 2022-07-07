@@ -1,6 +1,6 @@
 package com.gl.donate_receive.service;
 
-import com.gl.donate_receive.dto.UserCreateDto;
+import com.gl.donate_receive.dto.UserDto;
 import com.gl.donate_receive.model.User;
 import com.gl.donate_receive.repository.UserRepository;
 import com.gl.donate_receive.service.converter.UserConverter;
@@ -17,8 +17,9 @@ public class UserService {
 		this.userConverter = userConverter;
 	}
 
-	public User create(UserCreateDto userDto) {
+	public User create(UserDto userDto) {
 		var user = userConverter.dtoToModel(userDto);
 		return userRepository.save(user);
 	}
+
 }

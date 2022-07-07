@@ -1,9 +1,11 @@
 package com.gl.donate_receive.controller;
 
+import com.gl.donate_receive.service.AuthenticatedUserService;
 import com.gl.donate_receive.dto.ItemDto;
 import com.gl.donate_receive.model.Item;
 import com.gl.donate_receive.model.ItemType;
 import com.gl.donate_receive.service.ItemService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ItemController {
 
 	private ItemService itemService;
+	private AuthenticatedUserService authenticatedUserService;
 
 	public ItemController(ItemService itemService) {
 		this.itemService = itemService;
@@ -38,6 +41,7 @@ public class ItemController {
 	}
 
 	@GetMapping("/{itemId}")
+	@PreAuthorize("@authenticatedUserService.hasItem(#itemId)")
 	public String update(@PathVariable("itemId") String itemId, Model model) {
 		Item item = itemService.getById(itemId);
 		model.addAttribute("item", item);
@@ -46,7 +50,7 @@ public class ItemController {
 	}
 
 	@PostMapping("/{itemId}")
-	public String update(@PathVariable("itemId") String itemId, Model model,
+	public String update(@PathVariable("itemId") String itemId,
 	                     @Validated @ModelAttribute("item") ItemDto itemDto) {
 		itemService.update(itemId, itemDto);
 		return "redirect:/home";

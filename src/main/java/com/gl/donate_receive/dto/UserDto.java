@@ -7,11 +7,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
-public class UserCreateDto {
-	@NotNull
-	private String login;
+public class UserDto {
+
 	@NotNull
 	@Size(max = 320)
+	private String login;
+	@NotNull
+	@Size(max = 128)
 	private String password;
 	private Role role;
+
 }
+
