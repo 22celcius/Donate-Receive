@@ -4,7 +4,7 @@ import com.gl.donate_receive.donate_receive.dto.ItemDto;
 import com.gl.donate_receive.donate_receive.model.Item;
 import com.gl.donate_receive.donate_receive.repository.ItemRepository;
 import com.gl.donate_receive.donate_receive.service.converter.ItemConverter;
-import com.gl.donate_receive.donate_receive.service.interfaces.ItemServiceInterface;
+import com.gl.donate_receive.donate_receive.service.interfaces.ItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.persistence.EntityNotFoundException;
 
 @Service
 @AllArgsConstructor
-public class ItemService implements ItemServiceInterface {
+public class ItemServiceImpl implements ItemService {
 
 	private final ItemRepository itemRepository;
 	private final ItemConverter itemConverter;

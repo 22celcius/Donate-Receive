@@ -2,7 +2,7 @@ package com.gl.donate_receive.donate_receive.controller;
 
 import com.gl.donate_receive.donate_receive.dto.UserDto;
 import com.gl.donate_receive.donate_receive.model.User;
-import com.gl.donate_receive.donate_receive.service.UserService;
+import com.gl.donate_receive.donate_receive.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 public class UserController {
 
-	private UserService userService;
+	private UserServiceImpl userService;
 
-	public UserController(UserService userService) {
+	public UserController(UserServiceImpl userService) {
 		this.userService = userService;
 	}
 

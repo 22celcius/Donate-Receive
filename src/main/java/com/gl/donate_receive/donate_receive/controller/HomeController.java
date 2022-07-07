@@ -1,15 +1,15 @@
 package com.gl.donate_receive.donate_receive.controller;
 
-import com.gl.donate_receive.donate_receive.service.ItemService;
+import com.gl.donate_receive.donate_receive.service.ItemServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-	private final ItemService itemService;
+	private final ItemServiceImpl itemService;
 
-	public HomeController(ItemService itemService) {
+	public HomeController(ItemServiceImpl itemService) {
 		this.itemService = itemService;
 	}
 

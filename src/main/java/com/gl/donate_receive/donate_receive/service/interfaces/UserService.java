@@ -4,7 +4,7 @@ import com.gl.donate_receive.donate_receive.dto.UserDto;
 import com.gl.donate_receive.donate_receive.model.User;
 import java.util.List;
 
-public interface UserServiceInterface {
+public interface UserService {
 
     User create(UserDto userDto);
 

@@ -4,7 +4,7 @@ import com.gl.donate_receive.donate_receive.dto.UserDto;
 import com.gl.donate_receive.donate_receive.model.User;
 import com.gl.donate_receive.donate_receive.repository.UserRepository;
 import com.gl.donate_receive.donate_receive.service.converter.UserConverter;
-import com.gl.donate_receive.donate_receive.service.interfaces.UserServiceInterface;
+import com.gl.donate_receive.donate_receive.service.interfaces.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-public class UserService implements UserServiceInterface {
+public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
 	private final UserConverter userConverter;
