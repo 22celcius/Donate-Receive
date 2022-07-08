@@ -1,7 +1,9 @@
 package com.gl.donate_receive.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +23,8 @@ import javax.validation.constraints.Size;
 @Data
 @Table(name = "users")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
