@@ -25,4 +25,6 @@ public class UserController {
 		final User createdUser = userService.create(user);
 		return new ResponseEntity<>(createdUser, HttpStatus.OK);
 	}
+
+
 }
