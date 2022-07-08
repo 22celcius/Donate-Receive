@@ -1,6 +1,6 @@
 package com.gl.donate_receive.controller;
 
-import com.gl.donate_receive.service.ItemService;
+import com.gl.donate_receive.service.interfaces.ItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

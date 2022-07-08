@@ -1,6 +1,11 @@
 package com.gl.donate_receive.controller;
 
 import com.gl.donate_receive.dto.UserDto;
+import com.gl.donate_receive.model.User;
+import com.gl.donate_receive.service.interfaces.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import com.gl.donate_receive.dto.UserDto;
 import com.gl.donate_receive.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/users")
 public class UserController {
 
-	private UserService userService;
+	private final UserService userService;
 
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -36,4 +41,5 @@ public class UserController {
 		model.addAttribute("userId", createdUser.getUserId());
 		return "redirect:home";
 	}
+
 }

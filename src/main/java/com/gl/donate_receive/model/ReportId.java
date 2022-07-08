@@ -1,7 +1,6 @@
 package com.gl.donate_receive.model;
 
 import lombok.Data;
-
 import java.io.Serializable;
 import java.util.UUID;
 import javax.persistence.Embeddable;
