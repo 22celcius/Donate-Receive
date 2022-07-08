@@ -4,6 +4,7 @@ import com.gl.donate_receive.service.AuthenticatedUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,6 +32,7 @@ public class WebSecurityConfig {
 	protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
 			.antMatchers("/users").permitAll()
+			.antMatchers(HttpMethod.GET, "/home").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
@@ -38,6 +40,11 @@ public class WebSecurityConfig {
 			.loginProcessingUrl("/form-login")
 			.defaultSuccessUrl("/home")
 			.failureUrl("/form-login?error=true")
+			.permitAll()
+			.and()
+			.logout()
+			.logoutSuccessUrl("/form-login")
+			.deleteCookies("JSESSIONID")
 			.permitAll();
 
 		return httpSecurity.build();

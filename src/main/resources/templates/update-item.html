@@ -9,7 +9,7 @@
 <div th:replace="header"></div>
 <div class="col-md-offset-2 col-sm-6">
     <h2>Update existing Item</h2>
-    <form class="form-horizontal" th:action="@{|/items/${itemId}|}" th:object="${item}" method="post">
+    <form class="form-horizontal" th:action="@{|/items/${itemId}|}" th:object="${item}" th:method="PUT">
         <div class="form-group">
             <label class="control-label" for="name">Name:</label>
             <input class="form-control" type="text" th:field="*{name}" id="name" th:value="*{name}"/>

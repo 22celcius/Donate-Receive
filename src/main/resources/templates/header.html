@@ -4,15 +4,16 @@
             <div class="navbar-header">
                 <a class="navbar-brand" th:href="@{/home}">Home Page |</a>
             </div>
-<!--            <div align="right">-->
-<!--                <a class="navbar-brand">Welcome</a>-->
-<!--                <div class="navbar-brand" sec:authorize="isAuthenticated()">-->
-<!--                    <form th:action="@{/form-login}" method="post">-->
-<!--                        <input type="submit" value="logOut"/>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-
+        </div>
+        <div sec:authorize="isAuthenticated()" style="position: absolute; top: 10px; right: 20px;">
+            <form th:action="@{/logout}" method="post" style="display: inline-block">
+                <input class="btn-info btn-lg btn-sm" type="submit" value="LogOut">
+            </form>
+        </div>
+        <div sec:authorize="!isAuthenticated()" style="position: absolute; top: 10px; right: 20px;">
+            <form th:action="@{/login}" method="post" style="display: inline-block">
+                <input class="btn-info btn-lg btn-sm" type="submit" value="LogIn">
+            </form>
         </div>
     </nav>
 </div>

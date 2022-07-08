@@ -22,7 +22,7 @@ public class ItemConverter {
 	}
 
 	private ItemStatus getStatus(ItemDto itemDto) {
-		return itemDto.getType().equals(ItemType.AVAILABLE) ?
+		return ItemType.AVAILABLE.equals(itemDto.getType()) ?
 			ItemStatus.RECEIVABLE : ItemStatus.DONATABLE;
 	}
 

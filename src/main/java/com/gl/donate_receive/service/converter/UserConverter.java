@@ -18,13 +18,8 @@ public class UserConverter {
 		return User.builder()
 			.login(userDto.getLogin())
 			.password(passwordEncoder.encode(userDto.getPassword()))
-			.role(getRole(userDto.getRole()))
+			.role(userDto.getRole())
 			.build();
 	}
 
-	private Role getRole(Role role) {
-		return role == null ? Role.USER : role;
-	}
-
 }
-
