@@ -5,14 +5,16 @@
                 <a class="navbar-brand" th:href="@{/home}">Home Page |</a>
             </div>
         </div>
-        <div sec:authorize="isAuthenticated()" style="position: absolute; top: 10px; right: 20px;">
-            <form th:action="@{/logout}" method="post" style="display: inline-block">
-                <input class="btn-info btn-lg btn-sm" type="submit" value="LogOut">
-            </form>
-        </div>
-        <div sec:authorize="!isAuthenticated()" style="position: absolute; top: 10px; right: 20px;">
-            <form th:action="@{/login}" method="post" style="display: inline-block">
-                <input class="btn-info btn-lg btn-sm" type="submit" value="LogIn">
+        <div style="position: absolute; top: 10px; right: 20px;">
+            <form
+                    th:action="${#authorization.expression('isAuthenticated()')} ? @{/logout} : @{/login}"
+                    method="post"
+                    style="display: inline-block"
+            >
+                <input class="btn-info btn-lg btn-sm"
+                       type="submit"
+                       th:value="${#authorization.expression('isAuthenticated()')} ? LogOut : LogIn"
+                >
             </form>
         </div>
     </nav>
