@@ -4,6 +4,7 @@ import com.gl.donate_receive.dto.ItemDto;
 import com.gl.donate_receive.model.Item;
 import com.gl.donate_receive.model.ItemType;
 import com.gl.donate_receive.service.interfaces.ItemService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -25,7 +27,7 @@ public class ItemController {
 	}
 
 	@GetMapping
-	public String create(Model model) {
+	public String getCreationForm(Model model) {
 		model.addAttribute("item", new ItemDto());
 		model.addAttribute("itemTypes", ItemType.values());
 		return "create-item";
@@ -38,30 +40,40 @@ public class ItemController {
 	}
 
 	@GetMapping("/{itemId}")
-	public String update(@PathVariable("itemId") String itemId, Model model) {
+	@PreAuthorize("@authenticatedUserService.hasItem(#itemId)")
+	public String getUpdatingForm(@PathVariable("itemId") String itemId, Model model) {
 		Item item = itemService.getById(itemId);
 		model.addAttribute("item", item);
 		model.addAttribute("itemTypes", ItemType.values());
 		return "update-item";
 	}
 
-	@PostMapping("/{itemId}")
-	public String update(@PathVariable("itemId") String itemId, Model model,
+	@PutMapping("/{itemId}")
+	public String update(@PathVariable("itemId") String itemId,
 	                     @Validated @ModelAttribute("item") ItemDto itemDto) {
 		itemService.update(itemId, itemDto);
 		return "redirect:/home";
 	}
 
 	@DeleteMapping("/{itemId}")
+	@PreAuthorize("@authenticatedUserService.hasItem(#itemId)")
 	public String delete(@PathVariable("itemId") String itemId) {
 		itemService.delete(itemId);
 		return "redirect:/home";
 	}
 
 	@GetMapping("/{itemId}/manage")
-	public String manage(@PathVariable("itemId") String itemId, Model model) {
+	public String getManagingForm(@PathVariable("itemId") String itemId, Model model) {
 		Item item = itemService.getById(itemId);
 		model.addAttribute("item", item);
 		return "manage-item";
+	}
+
+	@GetMapping("/{itemId}/info")
+	public String getById(@PathVariable("itemId") String itemId, Model model) {
+		var item = itemService.getById(itemId);
+		model.addAttribute("item", item);
+
+		return "item-info";
 	}
 }

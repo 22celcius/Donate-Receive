@@ -1,6 +1,7 @@
 package com.gl.donate_receive.service;
 
 import com.gl.donate_receive.dto.UserDto;
+import com.gl.donate_receive.model.Role;
 import com.gl.donate_receive.model.User;
 import com.gl.donate_receive.repository.UserRepository;
 import com.gl.donate_receive.service.converter.UserConverter;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User create(UserDto userDto) {
 		User user = userConverter.dtoToModel(userDto);
+		verifyUserRole(user);
 		return userRepository.save(user);
 	}
 
@@ -46,5 +48,11 @@ public class UserServiceImpl implements UserService {
 	public List<User> getAll() {
 		return userRepository.findAll();
 	}
-}
 
+	private void verifyUserRole(User user) {
+		if (user.getRole() == null) {
+			user.setRole(Role.USER);
+		}
+	}
+
+}

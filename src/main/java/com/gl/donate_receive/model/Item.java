@@ -20,6 +20,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID itemId;
@@ -30,4 +31,5 @@ public class Item {
 	private ItemType type;
 	private ItemStatus status;
 	private UUID ownerId;
+
 }
