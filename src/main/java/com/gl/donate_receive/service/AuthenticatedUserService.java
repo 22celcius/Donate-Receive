@@ -2,7 +2,6 @@ package com.gl.donate_receive.service;
 
 import com.gl.donate_receive.model.User;
 import com.gl.donate_receive.repository.UserRepository;
-import com.gl.donate_receive.service.converter.UserConverter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,11 +13,9 @@ import java.util.UUID;
 @Service
 public class AuthenticatedUserService implements UserDetailsService {
 	private final UserRepository userRepository;
-	private final UserConverter userConverter;
 
-	public AuthenticatedUserService(UserRepository userRepository, UserConverter userConverter) {
+	public AuthenticatedUserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
-		this.userConverter = userConverter;
 	}
 
 	@Override
@@ -27,13 +24,14 @@ public class AuthenticatedUserService implements UserDetailsService {
 	}
 
 	public boolean hasItem(UUID id) {
+		if (id == null) return false;
+
 		var login = SecurityContextHolder.getContext().getAuthentication().getName();
 		var user = getByLogin(login);
 
 		return user.getItems()
 			.stream()
 			.anyMatch(item -> item.getItemId().equals(id));
-
 	}
 
 	private User getByLogin(String login) {
