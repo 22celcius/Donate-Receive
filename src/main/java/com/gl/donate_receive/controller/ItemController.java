@@ -56,6 +56,7 @@ public class ItemController {
 	}
 
 	@DeleteMapping("/{itemId}")
+	@PreAuthorize("@authenticatedUserService.hasItem(#itemId)")
 	public String delete(@PathVariable("itemId") String itemId) {
 		itemService.delete(itemId);
 		return "redirect:/home";
@@ -67,4 +68,5 @@ public class ItemController {
 		model.addAttribute("item", item);
 		return "manage-item";
 	}
+
 }

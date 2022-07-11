@@ -33,24 +33,26 @@
             <td th:text="${item.type}"/>
             <td th:text="${item.status}"/>
             <td th:text="${item.ownerId}"/>
-            <td>
-                <form sec:authorize="isAuthenticated()" th:action="@{|/items/${item.itemId}/info|}" th:method="get">
+            <td sec:authorize="isAuthenticated()">
+                <form th:action="@{|/items/${item.itemId}/info|}" th:method="get">
                     <button class="btn-info btn-lg btn-sm" type="submit">View</button>
                 </form>
             </td>
-            <td>
-                <form sec:authorize="isAuthenticated()" th:action="@{|/items/${item.itemId}|}" th:method="get">
+            <td sec:authorize="isAuthenticated()">
+                <form sec:authorize="isAuthenticated()" th:action="@{|/items/${item.itemId}/manage|}" th:method="get">
+                    <button class="btn-info btn-lg btn-sm" type="submit">Manage</button>
+                </form>
+            </td>
+            <td sec:authorize="isAuthenticated()">
+                <form th:if="${@authenticatedUserService.hasItem(item.itemId)}" th:action="@{|/items/${item.itemId}|}"
+                      th:method="get">
                     <button class="btn-info btn-lg btn-sm" type="submit">Edit</button>
                 </form>
             </td>
-            <td>
-                <form sec:authorize="isAuthenticated()" th:action="@{|/items/${item.itemId}|}" th:method="delete">
+            <td sec:authorize="isAuthenticated()">
+                <form th:if="${@authenticatedUserService.hasItem(item.itemId)}" th:action="@{|/items/${item.itemId}|}"
+                      th:method="delete">
                     <button class="btn-info btn-lg btn-sm" type="submit">Delete</button>
-                </form>
-            </td>
-            <td>
-                <form sec:authorize="isAuthenticated()" th:action="@{|/items/${item.itemId}/manage|}" th:method="get">
-                    <button class="btn-info btn-lg btn-sm" type="submit">Manage</button>
                 </form>
             </td>
         </tr>
