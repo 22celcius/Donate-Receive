@@ -69,4 +69,11 @@ public class ItemController {
 		return "manage-item";
 	}
 
+	@GetMapping("/{itemId}/info")
+	public String getById(@PathVariable("itemId") String itemId, Model model) {
+		var item = itemService.getById(itemId);
+		model.addAttribute("item", item);
+
+		return "item-info";
+	}
 }
