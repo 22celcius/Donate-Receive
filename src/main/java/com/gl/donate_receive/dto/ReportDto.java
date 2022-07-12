@@ -1,15 +1,14 @@
 package com.gl.donate_receive.dto;
 
 import lombok.Data;
-
-import java.util.UUID;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class ReportDto {
 
-	private UUID itemId;
-	private UUID receiverId;
+	private String itemId;
+	private String receiverId;
 	private String comment;
-	private byte[] mediaFile;
+	private MultipartFile file;
 
 }

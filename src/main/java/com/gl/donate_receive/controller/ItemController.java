@@ -2,8 +2,10 @@ package com.gl.donate_receive.controller;
 
 import com.gl.donate_receive.dto.ItemDto;
 import com.gl.donate_receive.model.Item;
+import com.gl.donate_receive.model.ItemStatus;
 import com.gl.donate_receive.model.ItemType;
 import com.gl.donate_receive.service.interfaces.ItemService;
+import com.gl.donate_receive.service.interfaces.ReportService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +18,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Base64;
+
 @Controller
 @RequestMapping("/items")
 public class ItemController {
 
 	private final ItemService itemService;
+	private final ReportService reportService;
 
-	public ItemController(ItemService itemService) {
+	public ItemController(ItemService itemService, ReportService reportService) {
 		this.itemService = itemService;
+		this.reportService = reportService;
 	}
 
 	@GetMapping
@@ -73,6 +79,11 @@ public class ItemController {
 	public String getById(@PathVariable("itemId") String itemId, Model model) {
 		var item = itemService.getById(itemId);
 		model.addAttribute("item", item);
+		if (ItemStatus.DELIVERED.equals(item.getStatus())) {
+			var report = reportService.getByItem(item);
+			model.addAttribute("comment", report.getComment());
+			model.addAttribute("picture", Base64.getEncoder().encodeToString(report.getMediaFile()));
+		}
 
 		return "item-info";
 	}
