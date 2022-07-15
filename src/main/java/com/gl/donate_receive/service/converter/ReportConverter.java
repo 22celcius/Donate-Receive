@@ -13,18 +13,18 @@ import java.util.UUID;
 public class ReportConverter {
 
 	public Report dtoToModel(ReportDto reportDto) {
-		var reportId = getReportId(reportDto.getReceiverId(), reportDto.getReceiverId());
+		var reportId = getReportId(reportDto.getItemId(), reportDto.getReceiverId());
 		return Report.builder()
-			.comment(reportDto.getComment())
 			.reportId(reportId)
+			.comment(reportDto.getComment())
 			.mediaFile(convertMediaFileToBytesArray(reportDto.getFile()))
 			.build();
 	}
 
-	private ReportId getReportId(String itemId, String receiverId) {
+	private ReportId getReportId(UUID itemId, UUID receiverId) {
 		var reportId = new ReportId();
-		reportId.setItemId(UUID.fromString(itemId));
-		reportId.setReceiverId(UUID.fromString(receiverId));
+		reportId.setItemId(itemId);
+		reportId.setReceiverId(receiverId);
 		return reportId;
 	}
 

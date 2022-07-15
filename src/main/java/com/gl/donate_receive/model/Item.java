@@ -31,5 +31,6 @@ public class Item {
 	private ItemType type;
 	private ItemStatus status;
 	private UUID ownerId;
+	private UUID receiverId;
 
 }

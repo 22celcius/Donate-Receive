@@ -14,4 +14,6 @@ public interface ReportService {
 
 	Report getByItem(Item item);
 
+	Report updateComment(Item item, String comment);
+
 }

@@ -24,7 +24,10 @@
         <div class="col-md-8">
             <h2>Upload File</h2>
             <input type="file" name="files" accept="image/png, image/jpg, image/jpeg" id="mediaFile" th:field="*{file}">
+            <span class="form-text text-muted" th:if="${#fields.hasErrors('file')}"
+                  th:errors="*{file}"></span>
         </div>
+        <img th:src="@{/images}">
     </div>
     </div>
     <div align="center">

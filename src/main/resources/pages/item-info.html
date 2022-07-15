@@ -13,31 +13,28 @@
     <table class="table" padding="0 16px !important">
         <tr>
             <td class="col-md-2">Name:</td>
-            <td class="col-md-2" th:text="${item.name}"></td>
+            <td class="col-md-2" th:text="${fullItem.name}"></td>
         </tr>
         <tr>
             <td>Description:</td>
-            <td th:text="${item.description}"></td>
+            <td th:text="${fullItem.description}"></td>
         </tr>
         <tr>
             <td>Type</td>
-            <td th:text="${item.type}"></td>
+            <td th:text="${fullItem.type}"></td>
         </tr>
         <tr>
             <td>Status:</td>
-            <td th:text="${item.status}"></td>
+            <td th:text="${fullItem.status}"></td>
         </tr>
-        <tr th:if="${report != null}">
+        <tr th:if="${fullItem.comment != null}">
             <td>Report comment:</td>
-            <td th:text="${comment}"></td>
+            <td th:text="${fullItem.comment}"></td>
         </tr>
     </table>
-    <div class="media-body" th:if="${picture != null}">
-        <div class="mx-auto">
-            <img class="media-object" padding="0 16px !important" height="auto"
-                 th:src="@{'data:image/png;base64,' + ${picture} }"/>
-        </div>
-
+    <div class="card-body" th:if="${file != null}">
+            <img class="rounded mx-auto d-block" padding="0 16px !important"
+                 th:src="@{'data:image/png;base64,' + ${file} }"/>
     </div>
 </div>
 </body>
