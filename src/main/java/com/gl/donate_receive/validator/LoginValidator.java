@@ -1,7 +1,7 @@
-package com.gl.donate_receive.valodator;
+package com.gl.donate_receive.validator;
 
 import com.gl.donate_receive.repository.UserRepository;
-import com.gl.donate_receive.valodator.annotation.ValidLogin;
+import com.gl.donate_receive.validator.annotation.ValidLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

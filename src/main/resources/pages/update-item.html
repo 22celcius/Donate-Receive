@@ -9,13 +9,13 @@
 <div th:replace="templates/header"></div>
 <div class="col-md-offset-2 col-sm-6">
     <h2>Update existing Item</h2>
-    <form class="form-horizontal" th:action="@{|/items/${itemId}|}" th:object="${item}" th:method="PUT">
+    <form class="form-horizontal" th:action="@{|/items/${itemId}|}" th:object="${fullItem}" th:method="PUT">
         <div class="form-group">
             <label class="control-label" for="name">Name:</label>
             <input class="form-control" type="text" th:field="*{name}" id="name" th:value="*{name}"/>
         </div>
         <div class="form-group">
-            <label class="control-label" for="name">Description:</label>
+            <label class="control-label" for="description">Description:</label>
             <input class="form-control" type="text" th:field="*{description}" id="description"
                    th:value="*{description}"/>
         </div>
@@ -23,17 +23,21 @@
             <label class="control-label" for="type">Item Type:</label>
             <select class="form-control" name="type" id="type">
                         <span th:each="type : ${itemTypes}">
-                            <option th:if="${type.equals(item.type)}" th:value="${type}"
+                            <option th:if="${type.equals(fullItem.type)}" th:value="${type}"
                                     th:selected="${true}"
                                     th:text="${type.name().substring(0, 1) + type.name().substring(1).toLowerCase()}"/>
-                            <option th:unless="${type == item.type}" th:value="${type}"
+                            <option th:unless="${type == fullItem.type}" th:value="${type}"
                                     th:text="${type.name().substring(0, 1) + type.name().substring(1).toLowerCase()}"/>
                         </span>
             </select>
         </div>
+        <div class="form-group" th:if="*{comment != null}">
+            <label class="control-label" for="comment">Report comment:</label>
+            <input class="form-control" type="text" th:name="comment" id="comment"
+                   th:value="*{comment}"/>
+        </div>
         <input class="btn btn-info" type="submit" value="Update"/>
         <input class="btn btn" type="reset" value="Clear"/>
-        <input type="hidden" name="id" th:value="*{itemId}">
         <input type="hidden" name="ownerId" th:value="*{ownerId}">
     </form>
 </div>
